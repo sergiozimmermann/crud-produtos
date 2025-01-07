@@ -39,36 +39,25 @@
                 </thead>
                 <tbody>
                     @foreach ($produtos as $produto)
-                    <tr style="cursor: pointer;">
-                        <!-- Envolvendo toda a linha da tabela com a tag <a> -->
+                    <tr onclick="window.location='{{ route('produtos.edit', $produto->id) }}'" style="cursor: pointer;">
                         <td>
-                            <a href="{{ route('produtos.edit', $produto->id) }}" style="color: inherit; text-decoration: none; display: block;">
-                                {{ $produto->id }}
-                            </a>
+                            {{ $produto->id }}
                         </td>
                         <td>
-                            <a href="{{ route('produtos.edit', $produto->id) }}" style="color: inherit; text-decoration: none; display: block;">
-                                {{ $produto->nome }}
-                            </a>
+                            {{ $produto->nome }}
                         </td>
                         <td>
-                            <a href="{{ route('produtos.edit', $produto->id) }}" style="color: inherit; text-decoration: none; display: block;">
-                                {{ $produto->descricao }}
-                            </a>
+                            {{ $produto->descricao }}
                         </td>
                         <td>
-                            <a href="{{ route('produtos.edit', $produto->id) }}" style="color: inherit; text-decoration: none; display: block;">
-                                R$ {{ number_format($produto->preco, 2, ',', '.') }}
-                            </a>
+                            R$ {{ number_format($produto->preco, 2, ',', '.') }}
                         </td>
                         <td>
                             <form action="{{ route('produtos.destroy', $produto->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <input type="hidden" name="_token" value="IccZAMAqzTXmoBss4gD0UMXxfaTUyEkz1rwvKoeW">
-                                <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-danger btn-sm rounded-circle" style="width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; padding: 0;">
-                                    <i class="fas fa-trash-alt" style="font-size: .75rem;"></i> <!-- Ícone de lixeira -->
+                                    <i class="fas fa-trash-alt" style="font-size: .75rem;"></i>
                                 </button>
                             </form>
                         </td>
@@ -76,6 +65,7 @@
                     @endforeach
                 </tbody>
             </table>
+
         </div>
     </div>
 </div>
